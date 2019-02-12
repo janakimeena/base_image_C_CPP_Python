@@ -1,0 +1,25 @@
+Docker implementation Notes
+
+## Build the image 
+cd <pathto testzmqapp>
+docker build . -t zmq-sample-one
+
+
+
+# create a swarm manager
+
+docker swarm init --advertise-addr <public ip>
+
+
+# Run the service with healthcheck
+
+docker service create  -p 5557:5557   --replicas 3   --name test   -u sandboxuser   --update-delay 10s   --with-registry-auth --limit-memory 50mb --health-interval 5s --health-retries 2 --health-timeout 3s --health-cmd "python3 /usr/src/app/healthcheck.py" --restart-condition any  zmq-sample-one
+
+
+## Notes:
+
+1) Always run and test in server or virtualbox. So that it will not affect the development system
+2) Healthcheck is mandatory to restart the container from Fork Bomb attack
+3) Memory limit is manadatory to set, inorder to prevent the freeze of host system.
+4) The total RAM usage of the replicas running in a Host system should be less than the available RAM.
+5) May need to increase the health-retries and health-timeout values. 

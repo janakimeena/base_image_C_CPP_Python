@@ -23,7 +23,7 @@ RUN rm /bin/uname
 RUN rm /sbin/mkf*
 RUN rm /bin/mkdir
 RUN rm /bin/rm
-RUN rm /bin/echo
+
 
 ENTRYPOINT ["python3"]
 CMD ["app.py"]

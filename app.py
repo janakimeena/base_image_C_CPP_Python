@@ -139,42 +139,7 @@ while True:
                 os.remove('codes/timeout.txt')
                 out['codetimeout'] = True
 
-        elif lang == 'JAVA':
-            print("executing java code")
-            with open('codes/Main.java','w') as myfile:
-                myfile.write(message['code'])
-            
-            command = './runcode.sh JAVA {}'.format(timeout)
-            os.system(command)
-            
-            if os.path.exists('codes/Main-compileout.txt'):
-                with open('codes/Main-compileout.txt', 'r') as myfile:
-                    out['compileout'] = myfile.read()
-                if os.path.isfile('codes/Main-compileout.txt'):
-                    os.remove('codes/Main-compileout.txt')
-            if os.path.exists('codes/Main-erroroutput.txt'):
-                with open('codes/Main-erroroutput.txt', 'r') as myfile:
-                    out['compileerror'] = myfile.read()
-                if os.path.isfile('codes/Main-erroroutput.txt'):
-                    os.remove('codes/Main-erroroutput.txt')
-            if os.path.exists('codes/Main-stdout.txt'):
-                with open('codes/Main-stdout.txt', 'r') as myfile:
-                    out['stdout'] = myfile.read()
-                if os.path.isfile('codes/Main-stdout.txt'):
-                    os.remove('codes/Main-stdout.txt')
-            if os.path.exists('codes/Main-stderror.txt'):
-                with open('codes/Main-stderror.txt', 'r') as myfile:
-                    out['stderror'] = myfile.read()
-                if os.path.isfile('codes/Main-stderror.txt'):
-                    os.remove('codes/Main-stderror.txt')
-            if os.path.isfile('codes/Main.java'):
-                os.remove('codes/Main.java')
-            if os.path.isfile('codes/Main.out'):
-                os.remove('codes/Main.out')
-            if os.path.isfile('codes/timeout.txt'):
-                os.remove('codes/timeout.txt')
-                out['codetimeout'] = True
-            
+                    
         elif lang == 'Python':
             print ("excecuting python code {}-{}-{}".format(message['id'],port, timestamp))
             with open('codes/{}-{}-{}.py'.format(message['id'],port, timestamp), 'w') as myfile:

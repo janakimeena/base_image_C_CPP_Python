@@ -47,23 +47,6 @@ elif [ "$TYPE" == "CPP" ]; then
     else
         echo "Error while compiling C++ Code"
     fi
-elif [ "$TYPE" == "JAVA" ]; then
-    cd codes
-    javac "Main.java" 1> Main-compileout.txt 2> Main-erroroutput.txt
-    RESULT=$?
-    if [ $RESULT -eq 0 ]; then
-        echo "Code compiled successfully"
-        timeout $2 java -Xmx256M -Xss64M "Main" <"input.txt" 1> "Main-stdout.txt" 2> "Main-stderror.txt"
-        if [ $? -eq 124 ]; then
-            echo 'timeout'> timeout.txt
-            cd ..
-        else
-            echo 'Ran correctly'
-        fi
-    else
-        echo $RESULT
-        echo "Error while compiling java code"
-    fi
 elif [ "$TYPE" == "Python" ]; then
 #    echo "firejail --quiet python $SCRIPTDIR$INPUTFILENAME.py 1> $SCRIPTDIR$INPUTFILENAME-stdout.txt 2> $SCRIPTDIR$INPUTFILENAME-stderror.txt"
     timeout $TIMEOUT python3 $SCRIPTDIR$INPUTFILENAME.py < "codes/input.txt" 1> $SCRIPTDIR$INPUTFILENAME-stdout.txt 2> $SCRIPTDIR$INPUTFILENAME-stderror.txt

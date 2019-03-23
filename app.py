@@ -201,7 +201,7 @@ while True:
             for file_name in file_names:
                 if os.path.exists('codes/'+file_name):
                     os.remove('codes/'+file_name)        
-	socket.send_json(out)
+	    socket.send_json(out)
         shutil.rmtree('/usr/src/app/codes',ignore_errors=True)
     except Exception as e:
         print (e.__str__())

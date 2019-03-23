@@ -33,7 +33,7 @@ while True:
         testcasepresent = message.get('testcasepresent',False)
         timeout = message.get('timeout', '10s')
         code_stdin = message.get('code_stdin','')
-	file_names = message.get('file_names', [])
+        file_names = message.get('file_names', [])
         file_contents = message.get('file_contents', [])
         #TODO: Files should be removed
         if file_names!=[]:

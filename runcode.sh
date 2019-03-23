@@ -10,9 +10,8 @@ TYPE=$1
 INPUTFILENAME=$2
 TIMEOUT=$3
 ERRORSTATUS=0
-
 # 100 kB filesize limit 
-ulimit -f 100
+ulimit -f 500
 
 if [ "$TYPE" == "C" ]; then
 #    echo "gcc $SCRIPTDIR$INPUTFILENAME.c -o $SCRIPTDIR$INPUTFILENAME.out  1>$SCRIPTDIR$INPUTFILENAME-compileout.txt 2>$SCRIPTDIR$INPUTFILENAME-erroroutput.txt"

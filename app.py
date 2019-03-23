@@ -198,9 +198,10 @@ while True:
                     os.remove('codes/timeout.txt')
                     out['testcase_timeout'] = True
         if file_names!=[]:
+            print('filenames are ',file_names)
             for file_name in file_names:
                 if os.path.exists(file_name):
-                    print(filename)
+                    print('Removing file '+filename)
                     os.remove(file_name)
         socket.send_json(out)
         shutil.rmtree('/usr/src/app/codes',ignore_errors=True)

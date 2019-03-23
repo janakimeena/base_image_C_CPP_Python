@@ -41,7 +41,7 @@ while True:
             for i in range(0,l):
                 file_name = file_names[i]
                 file_content = file_contents[i]
-                with open('codes/'+file_name, 'w') as f:
+                with open('file_name, 'w') as f:
                     f.write(file_content)
                     f.close()
         with open('codes/input.txt','w') as f:
@@ -199,8 +199,8 @@ while True:
                     out['testcase_timeout'] = True
         if file_names!=[]:
             for file_name in file_names:
-                if os.path.exists('codes/'+file_name):
-                    os.remove('codes/'+file_name)
+                if os.path.exists(file_name):
+                    os.remove(file_name)
         socket.send_json(out)
         shutil.rmtree('/usr/src/app/codes',ignore_errors=True)
     except Exception as e:

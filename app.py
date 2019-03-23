@@ -200,6 +200,7 @@ while True:
         if file_names!=[]:
             for file_name in file_names:
                 if os.path.exists(file_name):
+                    print(filename)
                     os.remove(file_name)
         socket.send_json(out)
         shutil.rmtree('/usr/src/app/codes',ignore_errors=True)
